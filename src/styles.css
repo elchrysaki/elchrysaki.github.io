@@ -108,15 +108,20 @@ a,
   );
 }
 
-.terminal-stage > img {
+.terminal-machine {
   position: absolute;
   z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-  filter: saturate(0.85) contrast(1.08);
+  width: min(100vw, 159.88vh);
+  aspect-ratio: 1586 / 992;
   transition: transform 1.8s cubic-bezier(0.75, 0, 0.25, 1), filter 1.2s ease;
+}
+
+.terminal-machine > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  filter: saturate(0.96) brightness(1.16) contrast(1.06);
 }
 
 .terminal-stage__shadow {
@@ -130,7 +135,7 @@ a,
   filter: blur(55px);
 }
 
-.archive--booting .terminal-stage > img {
+.archive--booting .terminal-machine {
   transform: scale(3.1) translateY(6%);
   filter: saturate(0.5) brightness(1.3) contrast(1.2);
 }
@@ -138,9 +143,9 @@ a,
 .power-hitbox {
   position: absolute;
   z-index: 10;
-  left: 17.3%;
-  top: 84.7%;
-  width: 4.2rem;
+  left: 15.25%;
+  top: 84.25%;
+  width: 5.05%;
   aspect-ratio: 1;
   padding: 0;
   border: 0;
@@ -151,9 +156,16 @@ a,
 
 .power-hitbox span {
   position: absolute;
-  inset: 24%;
-  border: 2px solid rgba(255, 192, 91, 0.8);
-  box-shadow: 0 0 12px var(--amber), inset 0 0 8px rgba(255, 171, 61, 0.45);
+  left: 20%;
+  top: 18%;
+  width: 60%;
+  aspect-ratio: 1;
+  border: clamp(1px, 0.16vw, 2px) solid #ffe19a;
+  border-radius: 8%;
+  background: rgba(255, 186, 60, 0.2);
+  box-shadow:
+    0 0 clamp(10px, 1.4vw, 22px) rgba(255, 185, 63, 0.95),
+    inset 0 0 clamp(5px, 0.7vw, 11px) rgba(255, 226, 154, 0.72);
   animation: pulse-power 1.35s steps(2, end) infinite;
 }
 
@@ -190,8 +202,12 @@ a,
   grid-row: 1 / 3;
   width: 0.7rem;
   aspect-ratio: 1;
-  background: var(--amber);
-  box-shadow: 0 0 12px var(--amber);
+  background: #fff0b8;
+  border: 1px solid #fff7d6;
+  box-shadow:
+    0 0 6px #fff3c4,
+    0 0 18px #ffb63c,
+    0 0 32px rgba(255, 166, 38, 0.72);
   animation: pulse-power 1.35s steps(2, end) infinite;
 }
 
@@ -1371,7 +1387,7 @@ a,
 
 @keyframes pulse-power {
   0%, 48% { opacity: 1; }
-  49%, 100% { opacity: 0.38; }
+  49%, 100% { opacity: 0.72; }
 }
 
 @keyframes line-in {
@@ -1521,9 +1537,8 @@ a,
 }
 
 @media (max-width: 620px) {
-  .terminal-stage > img {
-    width: 118%;
-    height: 118%;
+  .terminal-machine {
+    width: min(118vw, 188.66vh);
   }
 
   .power-hitbox,
