@@ -617,19 +617,25 @@ function App() {
 
       {mode !== "desktop" && (
         <section className="terminal-stage" aria-label="Field terminal power screen">
-          <img src="./assets/field-terminal.png" alt="An overgrown dystopian field computer with a cracked display" />
+          <div className="terminal-machine">
+            <img src="./assets/field-terminal.png" alt="An overgrown dystopian field computer with a cracked display" />
+            {mode === "off" && (
+              <>
+                <button className="power-hitbox" onClick={boot} aria-label="Boot the field terminal">
+                  <span />
+                </button>
+                <div className="terminal-label">ELENA.OS // FIELD UNIT 17-B</div>
+              </>
+            )}
+          </div>
           <div className="terminal-stage__shadow" />
           {mode === "off" ? (
             <>
-              <button className="power-hitbox" onClick={boot} aria-label="Boot the field terminal">
-                <span />
-              </button>
               <button className="boot-callout" onClick={boot}>
                 <span className="boot-callout__light" />
                 PRESS POWER TO ENTER
                 <small>or press Enter</small>
               </button>
-              <div className="terminal-label">ELENA.OS // FIELD UNIT 17-B</div>
             </>
           ) : (
             <div className="boot-sequence" role="status" aria-live="polite">
